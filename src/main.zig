@@ -1,5 +1,5 @@
 const std = @import("std");
-const rl = @import("raylib.zig");
+const rl = @import("raylib");
 const flecs = @import("flecs");
 const init = @import("init.zig");
 const components = @import("components/export.zig");
