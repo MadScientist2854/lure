@@ -1,9 +1,6 @@
 const flecs = @import("flecs");
-
-pub usingnamespace @import("2d.zig");
-pub usingnamespace @import("text.zig");
+pub const mod_2d = @import("../2d/init.zig").components;
 
 pub fn init(world: *flecs.World) void {
-    _ = world.newComponent(Position2D);
-    _ = world.newComponent(Text);
+    mod_2d.init(world);
 }

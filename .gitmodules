@@ -4,3 +4,6 @@
 [submodule "lib/zig-flecs"]
 	path = lib/zig-flecs
 	url = https://github.com/foxnne/zig-flecs
+[submodule "src/2d"]
+	path = src/2d
+	url = https://github.com/MadScientist2854/zig-raylib-flecs-2d

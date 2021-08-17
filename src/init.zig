@@ -11,12 +11,12 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
 
     // add entities
     const ehello_world = world.new();
-    world.set(ehello_world, &components.Text {
+    world.set(ehello_world, &components.mod_2d.Text {
         .text = "Hello, world!",
         .font_size = 100,
         .color = rl.BLACK
     });
-    world.set(ehello_world, &components.Position2D {
+    world.set(ehello_world, &components.mod_2d.Position2D {
         .x = 200,
         .y = 200
     });
