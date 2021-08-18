@@ -10,15 +10,28 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
     systems.init(world);
 
     // add entities
-    const ehello_world = world.new();
-    world.set(ehello_world, &components.mod_2d.Text {
-        .text = "Hello, world!",
-        .font_size = 100,
-        .color = rl.BLACK
+    const eplayer = world.new();
+    world.set(eplayer, &components.mod_2d.Rectangle {
+        .size = rl.Vector2 { .x = 50, .y = 125 },
+        .color = rl.DARKGREEN
     });
-    world.set(ehello_world, &components.mod_2d.Position2D {
-        .x = 200,
-        .y = 200
+    world.set(eplayer, &components.mod_2d.Position2D {
+        .x = 100,
+        .y = 100
+    });
+    world.add(eplayer, components.Player);
+
+    const eenemy = world.new();
+    world.set(eenemy, &components.mod_2d.Rectangle {
+        .size = rl.Vector2 { .x = 50, .y = 125 },
+        .color = rl.MAROON
+    });
+    world.set(eenemy, &components.mod_2d.Position2D {
+        .x = 500,
+        .y = 500
+    });
+    world.set(eenemy, &components.Enemy {
+        .target = eplayer
     });
 }
 

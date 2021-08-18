@@ -12,7 +12,7 @@ pub fn main() !void {
 
     // raylib initialization
     const screen_width = 1600;
-    const screen_height = 600;
+    const screen_height = 800;
     rl.InitWindow(screen_width, screen_height, "Title");
     defer rl.CloseWindow();
     rl.SetTargetFPS(60);
