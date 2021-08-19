@@ -7,3 +7,6 @@
 [submodule "src/2d"]
 	path = src/2d
 	url = https://github.com/MadScientist2854/zig-raylib-flecs-2d
+[submodule "src/2d-physics"]
+	path = src/2d-physics
+	url = https://github.com/MadScientist2854/2d-physics-zig-flecs
