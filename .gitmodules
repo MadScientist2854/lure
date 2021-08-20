@@ -7,3 +7,6 @@
 [submodule "src/2d-physics"]
 	path = src/2d-physics
 	url = https://github.com/MadScientist2854/2d-physics-zig-flecs
+[submodule "lib/raymath-zig"]
+	path = lib/raymath-zig
+	url = https://gist.github.com/MadScientist2854/af6a25804eb0f6621b26a28ca7875eb3
