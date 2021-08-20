@@ -1,5 +1,5 @@
 const flecs = @import("flecs");
-pub const mod_2d = @import("../2d/init.zig").systems;
+pub const mod_2d = @import("../2d-physics/init.zig").systems;
 
 pub usingnamespace @import("rl_frame.zig");
 pub usingnamespace @import("draw_fps.zig");
