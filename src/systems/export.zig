@@ -15,6 +15,4 @@ pub fn init(world: *flecs.World) void {
     _ = world.newSystem("Draw FPS", .on_store, "", draw_fps);
 
     _ = world.newSystem("End Frame", .post_frame, "", end_frame);
-
-    mod_2d.init(world);
 }

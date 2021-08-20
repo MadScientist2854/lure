@@ -7,6 +7,4 @@ pub usingnamespace @import("enemy.zig");
 pub fn init(world: *flecs.World) void {
     _ = world.newComponent(Player);
     _ = world.newComponent(Enemy);
-
-    mod_2d.init(world);
 }

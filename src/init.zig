@@ -3,8 +3,12 @@ const flecs = @import("flecs");
 const rl = @import("raylib");
 const components = @import("components/export.zig");
 const systems = @import("systems/export.zig");
+const mod_2d = @import("2d-physics/init.zig");
 
 pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocator.Error!void {
+    // init modules
+    mod_2d.init(world);
+
     // add components and systems
     components.init(world);
     systems.init(world);
