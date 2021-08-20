@@ -25,6 +25,10 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
         .x = 100,
         .y = 100
     });
+    world.set(eplayer, &components.mod_2d.Velocity2D {
+        .x = 0,
+        .y = 0
+    });
     world.add(eplayer, components.Player);
 
     const eenemy = world.new();
