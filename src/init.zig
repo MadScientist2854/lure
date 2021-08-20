@@ -9,6 +9,8 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
     components.init(world);
     systems.init(world);
 
+    // load resources
+
     // add entities
     const eplayer = world.new();
     world.set(eplayer, &components.mod_2d.Rectangle {
@@ -37,5 +39,6 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
 
 pub fn deinit(world: *flecs.World, arena: *std.heap.ArenaAllocator) void {
     // raylib deallocations can also go here, by doing a query on world, or just add triggers for those
+
     arena.deinit();
 }
