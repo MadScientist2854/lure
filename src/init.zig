@@ -47,6 +47,21 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
     world.set(eenemy, &components.Enemy {
         .target = eplayer
     });
+
+    const eshooter = world.new();
+    world.set(eshooter, &components.mod_2d.Rectangle {
+        .size = rl.Vector2 { .x = 50, .y = 125 },
+        .color = rl.BLUE
+    });
+    world.set(eshooter, &components.mod_2d.Position2D {
+        .x = 900,
+        .y = 500
+    });
+    world.set(eshooter, &components.mod_2d.Velocity2D {
+        .x = 0,
+        .y = 0
+    });
+    world.add(eshooter, components.Shooter);
 }
 
 pub fn deinit(world: *flecs.World, arena: *std.heap.ArenaAllocator) void {
