@@ -40,6 +40,10 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
         .x = 500,
         .y = 500
     });
+    world.set(eenemy, &components.mod_2d.Velocity2D {
+        .x = 0,
+        .y = 0
+    });
     world.set(eenemy, &components.Enemy {
         .target = eplayer
     });

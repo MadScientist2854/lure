@@ -8,7 +8,7 @@ pub usingnamespace @import("move_enemy.zig");
 
 pub fn init(world: *flecs.World) void {
     _ = world.newSystem("Move Player", .on_update, "Player, Velocity2D", move_player);
-    _ = world.newSystem("Move Enemy", .on_update, "Enemy, Position2D", move_enemy);
+    _ = world.newSystem("Move Enemy", .on_update, "Enemy, Position2D, Velocity2D", move_enemy);
 
     _ = world.newSystem("Setup Rendering", .pre_store, "", setup_render);
 
