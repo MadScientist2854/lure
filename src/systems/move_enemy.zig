@@ -3,7 +3,7 @@ const rl = @import("raylib");
 const rm = @import("raymath");
 const components = @import("../components/export.zig");
 
-const ENEMY_SPEED = 3;
+const ENEMY_SPEED = 4;
 pub fn move_enemy(it: *flecs.ecs_iter_t) callconv(.C) void {
     const enemies = it.column(components.Enemy, 1);
     const positions = it.column(components.mod_2d.Position2D, 2);
