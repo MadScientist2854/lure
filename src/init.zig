@@ -54,11 +54,11 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
         .color = rl.BLACK
     });
     world.set(ebullet, &components.mod_2d.Position2D {
-        .x = 900,
+        .x = 880,
         .y = 525
     });
     world.set(ebullet, &components.mod_2d.Velocity2D {
-        .x = 0,
+        .x = -20,
         .y = 0
     });
 
