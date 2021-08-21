@@ -62,6 +62,20 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
         .y = 0
     });
     world.add(eshooter, components.Shooter);
+
+    const ebullet = world.new();
+    world.set(ebullet, &components.mod_2d.Rectangle {
+        .size = rl.Vector2 { .x = 20, .y = 20 },
+        .color = rl.BLACK
+    });
+    world.set(ebullet, &components.mod_2d.Position2D {
+        .x = 900,
+        .y = 525
+    });
+    world.set(ebullet, &components.mod_2d.Velocity2D {
+        .x = 0,
+        .y = 0
+    });
 }
 
 pub fn deinit(world: *flecs.World, arena: *std.heap.ArenaAllocator) void {
