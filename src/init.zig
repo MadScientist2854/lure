@@ -48,6 +48,20 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
         .target = eplayer
     });
 
+    const ebullet = world.new();
+    world.set(ebullet, &components.mod_2d.Rectangle {
+        .size = rl.Vector2 { .x = 20, .y = 20 },
+        .color = rl.BLACK
+    });
+    world.set(ebullet, &components.mod_2d.Position2D {
+        .x = 900,
+        .y = 525
+    });
+    world.set(ebullet, &components.mod_2d.Velocity2D {
+        .x = 0,
+        .y = 0
+    });
+
     const eshooter = world.new();
     world.set(eshooter, &components.mod_2d.Rectangle {
         .size = rl.Vector2 { .x = 50, .y = 125 },
@@ -61,20 +75,8 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
         .x = 0,
         .y = 0
     });
-    world.add(eshooter, components.Shooter);
-
-    const ebullet = world.new();
-    world.set(ebullet, &components.mod_2d.Rectangle {
-        .size = rl.Vector2 { .x = 20, .y = 20 },
-        .color = rl.BLACK
-    });
-    world.set(ebullet, &components.mod_2d.Position2D {
-        .x = 900,
-        .y = 525
-    });
-    world.set(ebullet, &components.mod_2d.Velocity2D {
-        .x = 0,
-        .y = 0
+    world.set(eshooter, &components.Shooter {
+        .bullet = ebullet
     });
 }
 
