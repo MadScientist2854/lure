@@ -3,7 +3,7 @@ const rl = @import("raylib");
 const rm = @import("raymath");
 const components = @import("../components/export.zig");
 
-const ENEMY_SPEED = 7;
+const ENEMY_SPEED = 3;
 pub fn move_enemy(it: *flecs.ecs_iter_t) callconv(.C) void {
     const enemies = it.column(components.Enemy, 1);
     const positions = it.column(components.mod_2d.Position2D, 2);
@@ -24,7 +24,7 @@ pub fn move_enemy(it: *flecs.ecs_iter_t) callconv(.C) void {
         // get direction
         const enemy_pos = rm.Vector2 { .x = pos.x, .y = pos.y };
         const target_pos = rm.Vector2 { .x = target.x, .y = target.y };
-        const desired_velocity = target_pos.Subtract(enemy_pos).Normalize().Scale(5);
+        const desired_velocity = target_pos.Subtract(enemy_pos).Normalize().Scale(ENEMY_SPEED);
         const steering_force = desired_velocity.Subtract(vel_vec);
 
         // move towards direction
