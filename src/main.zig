@@ -17,6 +17,10 @@ pub fn main() !void {
     defer rl.CloseWindow();
     rl.SetTargetFPS(60);
 
+    // physac initialization
+    rl.InitPhysics();
+    defer rl.ClosePhysics();
+
     // game initialization
     var buffer: [100]u8 = undefined;
     var fba = std.heap.FixedBufferAllocator.init(&buffer);

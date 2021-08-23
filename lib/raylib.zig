@@ -1,1 +1,4 @@
-usingnamespace @cImport(@cInclude("raylib.h"));
+usingnamespace @cImport({
+    @cInclude("raylib.h");
+    @cInclude("extras/physac.h");
+});
