@@ -1,8 +1,8 @@
 const std = @import("std");
 const rl = @import("raylib");
 const flecs = @import("flecs");
+const cm = @import("chipmunk");
 const init = @import("init.zig");
-const components = @import("components/export.zig");
 
 pub fn main() !void {
     // FLECS initialization
@@ -21,14 +21,18 @@ pub fn main() !void {
     rl.InitPhysics();
     defer rl.ClosePhysics();
 
+    // chipmunk initialization
+    const space = cm.cpSpaceNew().?;
+    defer cm.cpSpaceFree(space);
+
     // game initialization
     var buffer: [100]u8 = undefined;
     var fba = std.heap.FixedBufferAllocator.init(&buffer);
     var arena = std.heap.ArenaAllocator.init(&fba.allocator);
     const allocator = &arena.allocator;
 
-    try init.init(&world, allocator);
-    defer init.deinit(&world, &arena);
+    try init.init(&world, space, allocator);
+    defer init.deinit(&world, space, &arena);
 
     // Main game loop
     while (!rl.WindowShouldClose()) {

@@ -1,13 +1,14 @@
 const std = @import("std");
 const flecs = @import("flecs");
 const rl = @import("raylib");
+const cm = @import("chipmunk");
 const components = @import("components/export.zig");
 const systems = @import("systems/export.zig");
 const mod_2d = @import("2d-physics/init.zig");
 
-pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocator.Error!void {
+pub fn init(world: *flecs.World, space: *cm.cpSpace, allocator: *std.mem.Allocator) std.mem.Allocator.Error!void {
     // init modules
-    mod_2d.init(world);
+    mod_2d.init(world, space);
 
     // init components and systems
     components.init(world);
@@ -83,7 +84,7 @@ pub fn init(world: *flecs.World, allocator: *std.mem.Allocator) std.mem.Allocato
     });
 }
 
-pub fn deinit(world: *flecs.World, arena: *std.heap.ArenaAllocator) void {
+pub fn deinit(world: *flecs.World, space: *cm.cpSpace, arena: *std.heap.ArenaAllocator) void {
     // raylib deallocations can also go here, by doing a query on world, or just add triggers for those
 
     arena.deinit();
