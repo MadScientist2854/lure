@@ -21,18 +21,16 @@ pub fn main() !void {
     rl.InitPhysics();
     defer rl.ClosePhysics();
 
-    // chipmunk initialization
-    const space = cm.cpSpaceNew().?;
-    defer cm.cpSpaceFree(space);
-
     // game initialization
-    var buffer: [100]u8 = undefined;
+    var buffer: [2048]u8 = undefined;
     var fba = std.heap.FixedBufferAllocator.init(&buffer);
     var arena = std.heap.ArenaAllocator.init(&fba.allocator);
     const allocator = &arena.allocator;
 
+    const space = cm.cpSpaceNew().?;
     try init.init(&world, space, allocator);
-    defer init.deinit(&world, space, &arena);
+    defer init.deinit(&world, &arena);
+    defer cm.cpSpaceFree(space);
 
     // Main game loop
     while (!rl.WindowShouldClose()) {
